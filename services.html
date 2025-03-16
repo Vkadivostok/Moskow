@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Услуги адвоката Козлова Владимира Михайловича. Гражданские, уголовные, семейные дела и другие юридические услуги.">
+    <meta name="description" content="Широкий спектр юридических услуг от адвоката Козлова В.М. Уголовные, гражданские, семейные дела.">
+    <meta name="keywords" content="услуги адвоката, юридическая помощь, Москва">
     <title>Услуги | Адвокат Козлов В.М.</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="images/fav2.png">
 </head>
 <body>
+    <!-- Шапка -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <img src="images/fav2.png" alt="Логотип" class="logo-image">
                 <h1>Адвокат Козлов В.М.</h1>
             </div>
+            <button class="menu-toggle">&#9776;</button>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
@@ -27,64 +30,61 @@
             </nav>
         </div>
     </header>
-    <section class="hero services-hero">
+
+    <!-- Баннер -->
+    <section class="hero services-hero animate-on-scroll">
         <div class="container">
-            <h2>Наши услуги</h2>
-            <p>Профессиональная юридическая помощь в различных областях права.</p>
+            <h2>Услуги</h2>
+            <p>Широкий спектр юридических услуг для решения ваших правовых вопросов.</p>
         </div>
     </section>
-    <section id="services" class="services">
+
+    <!-- Фильтры -->
+    <section class="service-filter">
         <div class="container">
-            <div class="service-filter">
-                <button class="filter-btn active" data-filter="all">Все услуги</button>
-                <button class="filter-btn" data-filter="civil">Гражданские дела</button>
-                <button class="filter-btn" data-filter="criminal">Уголовные дела</button>
-                <button class="filter-btn" data-filter="family">Семейные дела</button>
-                <button class="filter-btn" data-filter="business">Бизнес и право</button>
-            </div>
-            <div class="service-list">
-                <article class="service-item" data-category="civil">
-                    <h3>Гражданские споры</h3>
-                    <p>"Разрешение споров между физическими и юридическими лицами."</p>
-                </article>
-                <article class="service-item" data-category="criminal">
-                    <h3>Уголовная защита</h3>
-                    <p>"Защита прав подозреваемых и обвиняемых на всех этапах уголовного процесса."</p>
-                </article>
-                <article class="service-item" data-category="family">
+            <button class="filter-btn active" data-filter="all">Все услуги</button>
+            <button class="filter-btn" data-filter="civil">Гражданские дела</button>
+            <button class="filter-btn" data-filter="criminal">Уголовные дела</button>
+            <button class="filter-btn" data-filter="family">Семейные споры</button>
+            <button class="filter-btn" data-filter="business">Бизнес-право</button>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main>
+        <section class="service-list animate-on-scroll">
+            <div class="container">
+                <div class="service-item" data-category="civil">
+                    <h3>Гражданские дела</h3>
+                    <p>Разрешение споров между физическими и юридическими лицами.</p>
+                </div>
+                <div class="service-item" data-category="criminal">
+                    <h3>Уголовные дела</h3>
+                    <p>Защита прав подозреваемых и обвиняемых на всех этапах процесса.</p>
+                </div>
+                <div class="service-item" data-category="family">
                     <h3>Семейные споры</h3>
-                    <p>"Раздел имущества, определение места жительства детей, бракоразводные процессы."</p>
-                </article>
-                <article class="service-item" data-category="business">
-                    <h3>Юридическое сопровождение бизнеса</h3>
-                    <p>"Регистрация компаний, налоговое консультирование, разработка договоров."</p>
-                </article>
+                    <p>Раздел имущества, определение места жительства детей, бракоразводные процессы.</p>
+                </div>
+                <div class="service-item" data-category="business">
+                    <h3>Бизнес-право</h3>
+                    <p>Регистрация компаний, налоговые споры, договорное право.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
+    <!-- Подвал -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2023 Адвокат Козлов В.М. Все права защищены.</p>
         </div>
     </footer>
+
+    <!-- JavaScript для анимации при прокрутке -->
     <script>
-        function setupFilter(filterButtonsSelector, itemsSelector) {
-            document.querySelectorAll(filterButtonsSelector).forEach(button => {
-                button.addEventListener('click', () => {
-                    document.querySelectorAll(filterButtonsSelector).forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    const filter = button.dataset.filter;
-                    document.querySelectorAll(itemsSelector).forEach(item => {
-                        if (filter === 'all' || item.dataset.category === filter) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        }
         setupFilter('.service-filter .filter-btn', '.service-item');
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

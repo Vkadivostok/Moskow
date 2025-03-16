@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Отзывы клиентов об услугах адвоката Козлова Владимира Михайловича. Реальные истории успеха и благодарности наших клиентов.">
+    <meta name="description" content="Читайте отзывы клиентов об услугах адвоката Козлова В.М. Реальные истории успеха.">
+    <meta name="keywords" content="отзывы, адвокат, Москва">
     <title>Отзывы | Адвокат Козлов В.М.</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="images/fav2.png">
 </head>
 <body>
+    <!-- Шапка -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <img src="images/fav2.png" alt="Логотип" class="logo-image">
                 <h1>Адвокат Козлов В.М.</h1>
             </div>
+            <button class="menu-toggle">&#9776;</button>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
@@ -27,41 +30,58 @@
             </nav>
         </div>
     </header>
-    <section class="hero reviews-hero">
+
+    <!-- Баннер -->
+    <section class="hero reviews-hero animate-on-scroll">
         <div class="container">
-            <h2>Отзывы наших клиентов</h2>
-            <p>Реальные истории успеха и благодарности тех, кому мы помогли решить сложные юридические вопросы.</p>
+            <h2>Отзывы клиентов</h2>
+            <p>Читайте реальные истории успеха наших клиентов.</p>
         </div>
     </section>
-    <section id="reviews" class="reviews">
+
+    <!-- Фильтры -->
+    <section class="review-filter">
         <div class="container">
-            <div class="review-filter">
-                <button class="filter-btn active" data-filter="all">Все отзывы</button>
-                <button class="filter-btn" data-filter="5-stars">★★★★★</button>
-                <button class="filter-btn" data-filter="4-stars">★★★★☆</button>
-                <button class="filter-btn" data-filter="3-stars">★★★☆☆</button>
-            </div>
-            <div class="review-list">
-                <div class="review-item" data-rating="5-stars">
+            <button class="filter-btn active" data-filter="all">Все отзывы</button>
+            <button class="filter-btn" data-filter="positive">Положительные</button>
+            <button class="filter-btn" data-filter="neutral">Нейтральные</button>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main>
+        <section class="review-list animate-on-scroll">
+            <div class="container">
+                <div class="review-item" data-category="positive">
                     <div class="stars">★★★★★</div>
                     <h3>Александр, Москва</h3>
                     <p>"Обратился за консультацией по семейному вопросу. Результат превзошел ожидания!"</p>
                 </div>
-                <div class="review-item" data-rating="4-stars">
+                <div class="review-item" data-category="positive">
+                    <div class="stars">★★★★★</div>
+                    <h3>Дмитрий, Химки</h3>
+                    <p>"Попал в ДТП, не знал, что делать. Консультация была полезной. Избежал лишения прав!"</p>
+                </div>
+                <div class="review-item" data-category="neutral">
                     <div class="stars">★★★★☆</div>
-                    <h3>Максим, Подольск</h3>
-                    <p>"Вызвали к следователю. Теперь сплю спокойно."</p>
+                    <h3>Мария, Подольск</h3>
+                    <p>"Хороший специалист, но хотелось бы более быстрого решения вопроса."</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+
+    <!-- Подвал -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2023 Адвокат Козлов В.М. Все права защищены.</p>
         </div>
     </footer>
+
+    <!-- JavaScript для анимации при прокрутке -->
     <script>
         setupFilter('.review-filter .filter-btn', '.review-item');
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
