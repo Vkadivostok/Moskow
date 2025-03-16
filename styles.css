@@ -1,25 +1,30 @@
-/* Современный шрифт и улучшенные цвета */
+/* Основные цвета для темной темы */
 :root {
-    --primary-color: #1e3a8a; /* Глубокий синий */
-    --secondary-color: #3b82f6; /* Яркий синий */
-    --text-color: #fff;
-    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --primary-color: #3b82f6; /* Синий акцент */
+    --secondary-color: #1e40af; /* Темно-синий */
+    --text-color: #ffffff; /* Белый текст */
+    --background-color: #121212; /* Темный фон */
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     --font-family: 'Roboto', Arial, sans-serif;
 }
+
+/* Общие стили для темной темы */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: var(--font-family);
-    background-color: #f9fafb; /* Светлый фон */
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
 }
+
 .container {
-    max-width: 1400px; /* Увеличение максимальной ширины */
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -29,25 +34,30 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
+    background-color: #1e1e1e; /* Темный фон для шапки */
     box-shadow: var(--box-shadow);
     padding: 1rem 0;
 }
+
 .logo {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
+
 .logo-image {
     width: 30px;
     height: 30px;
     object-fit: cover;
     border-radius: 50%;
 }
+
 .logo h1 {
     font-size: 1.5rem;
     margin: 0;
+    color: var(--text-color); /* Белый текст для логотипа */
 }
+
 .nav ul {
     display: flex;
     gap: 1rem;
@@ -55,14 +65,16 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color); /* Белый текст для ссылок */
     font-weight: bold;
     transition: color 0.3s ease;
 }
+
 .nav a:hover {
-    color: var(--primary-color);
+    color: var(--primary-color); /* Синий при наведении */
 }
 
 /* Мобильное меню */
@@ -72,8 +84,9 @@ body {
     cursor: pointer;
     background: none;
     border: none;
-    color: #333;
+    color: var(--text-color); /* Белый цвет для кнопки меню */
 }
+
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -82,7 +95,7 @@ body {
         display: none;
         flex-direction: column;
         gap: 0.5rem;
-        background-color: #fff;
+        background-color: #1e1e1e; /* Темный фон для мобильного меню */
         position: absolute;
         top: 100%;
         left: 0;
@@ -100,7 +113,7 @@ body {
     .nav a {
         text-align: center;
         padding: 0.5rem 0;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #333; /* Темная граница для ссылок */
     }
     .nav a:last-child {
         border-bottom: none;
@@ -109,20 +122,23 @@ body {
 
 /* Баннеры */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)), url('images/ban.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(30, 64, 175, 0.8)), url('https://disk.yandex.com/i/CwX-hBJNDBohQQ') no-repeat center center/cover;
     color: var(--text-color);
     text-align: center;
     padding: 100px 0;
     animation: fadeIn 1.5s ease-in-out;
 }
+
 .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
+
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+
 .hero .btn {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
@@ -134,32 +150,33 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease;
 }
+
 .hero .btn:hover {
     transform: scale(1.05);
 }
 
 /* Стили для страниц "Услуги", "Обо мне" и "Контакты" */
-.services-hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)), url('images/ban-services.jpg') no-repeat center center/cover;
-}
-.about-hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)), url('images/ban-about.jpg') no-repeat center center/cover;
-}
-.contacts-hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)), url('images/ban-contacts.jpg') no-repeat center center/cover;
+.services-hero,
+.about-hero,
+.contacts-hero,
+.free-consultation-hero,
+.reviews-hero {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(30, 64, 175, 0.8)), url('https://disk.yandex.com/i/CwX-hBJNDBohQQ') no-repeat center center/cover;
 }
 
 /* Фильтры */
-.service-filter, .review-filter {
+.service-filter, 
+.review-filter {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
     animation: fadeIn 1s ease-in-out;
 }
+
 .filter-btn {
-    background: #fff;
-    color: var(--primary-color);
+    background: #333; /* Темный фон для кнопок фильтра */
+    color: var(--text-color);
     padding: 0.8rem 2rem;
     border: none;
     border-radius: 25px;
@@ -169,25 +186,30 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--box-shadow);
 }
+
 .filter-btn.active {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
     box-shadow: 0 8px 20px rgba(255, 111, 97, 0.8);
 }
+
 .filter-btn:hover {
     transform: scale(1.05);
 }
 
 /* Списки услуг и отзывов */
-.service-list, .review-list {
+.service-list, 
+.review-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
     animation: fadeIn 1.5s ease-in-out;
 }
-.service-item, .review-item {
-    background-color: #fff;
+
+.service-item, 
+.review-item {
+    background-color: #1e1e1e; /* Темный фон для блоков */
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
@@ -196,28 +218,57 @@ body {
     transform: translateY(20px);
     animation: fadeInBlock 0.8s ease-in-out forwards;
 }
-.service-item:nth-child(2), .review-item:nth-child(2) {
+
+.service-item:nth-child(2), 
+.review-item:nth-child(2) {
     animation-delay: 0.2s;
 }
-.service-item:nth-child(3), .review-item:nth-child(3) {
+
+.service-item:nth-child(3), 
+.review-item:nth-child(3) {
     animation-delay: 0.4s;
 }
-.service-item:nth-child(4), .review-item:nth-child(4) {
+
+.service-item:nth-child(4), 
+.review-item:nth-child(4) {
     animation-delay: 0.6s;
 }
-.service-item h3, .review-item h3 {
+
+.service-item h3, 
+.review-item h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Синий заголовок */
 }
-.service-item p, .review-item p {
+
+.service-item p, 
+.review-item p {
     font-size: 1.2rem;
-    color: #555;
+    color: #ccc; /* Светло-серый текст */
 }
+
 .review-item .stars {
     color: gold;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+}
+
+/* Дополнительные стили для SEO-текстов в услугах */
+.service-item .seo-text {
+    font-size: 0.9rem;
+    color: #b3b3b3; /* Более светлый серый цвет */
+    margin-top: 0.5rem;
+    display: block;
+}
+.service-item p {
+    position: relative;
+}
+.service-item .seo-text::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #444;
+    margin: 1rem 0;
 }
 
 /* Форма */
@@ -227,30 +278,39 @@ body {
     gap: 1rem;
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #1e1e1e; /* Темный фон для формы */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     text-align: left;
     animation: fadeInBlock 1s ease-in-out;
 }
+
 .consultation-form label {
     font-size: 1rem;
     font-weight: bold;
+    color: var(--text-color); /* Белый текст для меток */
 }
-.consultation-form input, .consultation-form textarea {
+
+.consultation-form input, 
+.consultation-form textarea {
     width: 100%;
     padding: 0.8rem;
     margin-top: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid #555; /* Серая граница */
     border-radius: 5px;
     font-size: 1rem;
+    background-color: #333; /* Темный фон для полей ввода */
+    color: var(--text-color); /* Белый текст для полей ввода */
     transition: border-color 0.3s ease;
 }
-.consultation-form input:focus, .consultation-form textarea:focus {
-    border-color: var(--primary-color);
+
+.consultation-form input:focus, 
+.consultation-form textarea:focus {
+    border-color: var(--primary-color); /* Синяя граница при фокусе */
     outline: none;
 }
+
 .consultation-form button {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
@@ -263,6 +323,7 @@ body {
     margin-top: 1rem;
     transition: transform 0.3s ease;
 }
+
 .consultation-form button:hover {
     transform: scale(1.05);
 }
@@ -270,31 +331,37 @@ body {
 /* SEO-текст */
 .seo-text {
     padding: 2rem 0;
-    background-color: #f9f9f9;
+    background-color: #1e1e1e; /* Темный фон для SEO-текста */
 }
+
 .seo-text h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Синий заголовок */
 }
+
 .seo-text p {
     font-size: 1.2rem;
     line-height: 1.6;
-    color: #333;
+    color: #ccc; /* Светло-серый текст */
     margin-bottom: 1.5rem;
 }
-.seo-text ul, .seo-text ol {
+
+.seo-text ul, 
+.seo-text ol {
     list-style: disc;
     margin-left: 1.5rem;
     margin-bottom: 1.5rem;
 }
+
 .seo-text li {
     font-size: 1.1rem;
-    color: #555;
+    color: #ccc; /* Светло-серый текст для списков */
     margin-bottom: 0.5rem;
 }
+
 .seo-text strong {
-    color: var(--primary-color);
+    color: var(--primary-color); /* Синий акцент для жирного текста */
 }
 
 /* Анимации */
@@ -306,6 +373,7 @@ body {
         opacity: 1;
     }
 }
+
 @keyframes fadeInBlock {
     from {
         opacity: 0;
@@ -319,33 +387,20 @@ body {
 
 /* Подвал */
 .footer {
-    background: url('C:/Users/Андрей/Desktop/Сайт/images/pod1.jpg') no-repeat center center/cover;
+    background: url('../Moskow/images/pod1.jpg') no-repeat center center/cover; /* Используем изображение для подвала */
     color: var(--text-color);
     text-align: center;
-    padding: 2rem 0;
+    padding: 4rem 0; /* Увеличиваем отступы для лучшего визуального эффекта */
     margin-top: 2rem;
 }
+
 .footer p {
     font-size: 1rem;
-    color: #fff; /* Цвет текста для лучшей читаемости на фоне изображения */
-}
-
-/* Темная тема */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: var(--text-color);
-    }
-    .header {
-        background-color: #1e1e1e;
-    }
-    .service-item, .review-item {
-        background-color: #222;
-        color: var(--text-color);
-    }
-    .footer {
-        background-color: #000;
-    }
+    color: var(--text-color); /* Белый текст для подвала */
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон для текста */
+    padding: 0.5rem 1rem; /* Отступы для текста */
+    border-radius: 5px; /* Скругленные углы */
+    display: inline-block; /* Чтобы фон не растягивался на всю ширину */
 }
 
 /* Дополнительные анимации при прокрутке */
@@ -354,7 +409,42 @@ body {
     transform: translateY(20px);
     transition: all 0.6s ease-in-out;
 }
+
 .animate-on-scroll.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Стили для фото адвоката */
+.advocate-image {
+    width: 200px; /* Ширина изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: var(--box-shadow); /* Тень для эффекта объема */
+    object-fit: cover; /* Корректное масштабирование изображения */
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Расстояние между фото и текстом */
+    margin-bottom: 2rem;
+    flex-wrap: wrap; /* Оборачивание на мобильных устройствах */
+}
+
+.about-intro {
+    flex: 1; /* Занимает оставшееся пространство */
+}
+
+@media (max-width: 768px) {
+    .about-header {
+        flex-direction: column; /* Изображение над текстом на маленьких экранах */
+        text-align: center; /* Центрирование текста */
+    }
+
+    .advocate-image {
+        width: 100%; /* Полная ширина на мобильных устройствах */
+        max-width: 300px; /* Ограничение максимальной ширины */
+        margin: 0 auto; /* Центрирование изображения */
+    }
 }
