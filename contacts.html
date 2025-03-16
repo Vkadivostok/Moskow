@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Контакты адвоката Козлова Владимира Михайловича. Свяжитесь с нами для получения профессиональной юридической помощи.">
+    <meta name="keywords" content="контакты адвоката, юридическая помощь, Москва, телефон, адрес">
+    <title>Контакты | Адвокат Козлов В.М.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/fav2.png">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/fav2.png" alt="Логотип" class="logo-image">
+                <h1>Адвокат Козлов В.М.</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">Обо мне</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="free-consultation.html">Бесплатная консультация</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Баннер -->
+    <section class="hero contacts-hero">
+        <div class="container">
+            <h2>Свяжитесь с нами</h2>
+            <p>Мы всегда готовы помочь! Оставьте заявку, и мы свяжемся с вами в ближайшее время.</p>
+        </div>
+    </section>
+    <!-- Основной контент -->
+    <main>
+        <!-- Контактная информация -->
+        <section id="contact-info" class="contact-info">
+            <div class="container">
+                <h2>Как нас найти?</h2>
+                <div class="contact-details">
+                    <div class="detail-block">
+                        <h3>Телефон</h3>
+                        <p><a href="tel:+79362782686">+7 (936) 278-26-86</a></p>
+                    </div>
+                    <div class="detail-block">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@advokat-kozlov.ru">info@advokat-kozlov.ru</a></p>
+                    </div>
+                    <div class="detail-block">
+                        <h3>Адрес</h3>
+                        <p>г. Москва, ул. Ленина, д. 45, офис 12</p>
+                    </div>
+                    <div class="detail-block">
+                        <h3>Режим работы</h3>
+                        <p>Пн–Пт: 9:00–18:00<br>Сб–Вс: выходной</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Карта (Яндекс.Карты через JavaScript API) -->
+        <section id="map" class="map">
+            <div class="container">
+                <h2>Мы на карте</h2>
+                <div id="yandex-map" style="width: 100%; height: 450px;"></div>
+            </div>
+        </section>
+        <!-- Форма обратной связи -->
+        <section id="contact-form" class="contact-form">
+            <div class="container">
+                <h2>Оставьте заявку</h2>
+                <form id="contact-form" class="consultation-form">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Введите номер телефона">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Опишите вашу ситуацию"></textarea>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Адвокат Козлов В.М. Все права защищены.</p>
+        </div>
+    </footer>
+    <!-- JavaScript для Яндекс.Карт -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU" type="text/javascript"></script>
+    <script>
+        // Инициализация карты
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map('yandex-map', {
+                center: [55.755826, 37.6173], // Координаты (широта, долгота)
+                zoom: 15 // Уровень масштабирования
+            });
+            // Добавление метки
+            var myPlacemark = new ymaps.Placemark([55.755826, 37.6173], {
+                hintContent: 'Адвокат Козлов В.М.',
+                balloonContent: 'г. Москва, ул. Ленина, д. 45, офис 12'
+            });
+            myMap.geoObjects.add(myPlacemark);
+        });
+    </script>
+    <!-- JavaScript для обработки формы -->
+    <script>
+        // Обработчик отправки формы
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Имитация отправки данных
+            alert('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.');
+            // Очищаем форму
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>

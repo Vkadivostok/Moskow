@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Отзывы клиентов об услугах адвоката Козлова Владимира Михайловича. Реальные истории успеха и благодарности наших клиентов.">
+    <title>Отзывы | Адвокат Козлов В.М.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/fav2.png">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/fav2.png" alt="Логотип" class="logo-image">
+                <h1>Адвокат Козлов В.М.</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">Обо мне</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="free-consultation.html">Бесплатная консультация</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero reviews-hero">
+        <div class="container">
+            <h2>Отзывы наших клиентов</h2>
+            <p>Реальные истории успеха и благодарности тех, кому мы помогли решить сложные юридические вопросы.</p>
+        </div>
+    </section>
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="review-filter">
+                <button class="filter-btn active" data-filter="all">Все отзывы</button>
+                <button class="filter-btn" data-filter="5-stars">★★★★★</button>
+                <button class="filter-btn" data-filter="4-stars">★★★★☆</button>
+                <button class="filter-btn" data-filter="3-stars">★★★☆☆</button>
+            </div>
+            <div class="review-list">
+                <div class="review-item" data-rating="5-stars">
+                    <div class="stars">★★★★★</div>
+                    <h3>Александр, Москва</h3>
+                    <p>"Обратился за консультацией по семейному вопросу. Результат превзошел ожидания!"</p>
+                </div>
+                <div class="review-item" data-rating="4-stars">
+                    <div class="stars">★★★★☆</div>
+                    <h3>Максим, Подольск</h3>
+                    <p>"Вызвали к следователю. Теперь сплю спокойно."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Адвокат Козлов В.М. Все права защищены.</p>
+        </div>
+    </footer>
+    <script>
+        setupFilter('.review-filter .filter-btn', '.review-item');
+    </script>
+</body>
+</html>
