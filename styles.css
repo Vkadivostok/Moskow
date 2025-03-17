@@ -1,7 +1,7 @@
 /* Основные цвета для темной темы */
 :root {
-    --primary-color: #3b82f6; /* Синий акцент */
-    --secondary-color: #1e40af; /* Темно-синий */
+    --primary-color: #dbdf2d; /* Синий акцент */
+    --secondary-color: #bb861f; /* Темно-синий */
     --text-color: #ffffff; /* Белый текст */
     --background-color: #121212; /* Темный фон */
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -17,7 +17,7 @@
 
 body {
     font-family: var(--font-family);
-    background-color: var(--background-color);
+    background-color: #1a3710;
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -123,8 +123,8 @@ body {
 
 /* Баннеры */
 .hero {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(30, 64, 175, 0.8)), url('https://disk.yandex.com/i/CwX-hBJNDBohQQ') no-repeat center center/cover;
-    color: var(--text-color);
+    background: linear-gradient(135deg, rgb(33 31 41 / 21%), rgba(30, 64, 175, 0.8)), url(https://disk.yandex.com/i/CwX-hBJNDBohQQ) no-repeat center center / cover;
+    color: #f3db23;
     text-align: center;
     padding: 100px 0;
     animation: fadeIn 1.5s ease-in-out;
@@ -162,7 +162,7 @@ body {
 .contacts-hero,
 .free-consultation-hero,
 .reviews-hero {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(30, 64, 175, 0.8)), url('https://disk.yandex.com/i/CwX-hBJNDBohQQ') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgb(103 246 59 / 80%), rgba(30, 64, 175, 0.8)), url(https://disk.yandex.com/i/CwX-hBJNDBohQQ) no-repeat center center / cover;
 }
 
 /* Фильтры */
