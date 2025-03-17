@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Широкий спектр юридических услуг от адвоката Козлова В.М. Уголовные, гражданские, семейные дела.">
-    <meta name="keywords" content="услуги адвоката, юридическая помощь, Москва">
-    <title>Услуги | Адвокат Козлов В.М.</title>
+    <meta name="description" content="Читайте отзывы клиентов об услугах адвоката Козлова В.М. Реальные истории успеха.">
+    <meta name="keywords" content="отзывы, адвокат, Москва">
+    <title>Отзывы | Адвокат Козлов В.М.</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="images/fav2.png">
 </head>
@@ -30,60 +30,52 @@
             </nav>
         </div>
     </header>
-
     <!-- Баннер -->
-    <section class="hero services-hero animate-on-scroll">
+    <section class="hero reviews-hero animate-on-scroll">
         <div class="container">
-            <h2>Услуги</h2>
-            <p>Широкий спектр юридических услуг для решения ваших правовых вопросов.</p>
+            <h2>Отзывы клиентов</h2>
+            <p>Читайте реальные истории успеха наших клиентов.</p>
         </div>
     </section>
-
     <!-- Фильтры -->
-    <section class="service-filter">
+    <section class="review-filter">
         <div class="container">
-            <button class="filter-btn active" data-filter="all">Все услуги</button>
-            <button class="filter-btn" data-filter="civil">Гражданские дела</button>
-            <button class="filter-btn" data-filter="criminal">Уголовные дела</button>
-            <button class="filter-btn" data-filter="family">Семейные споры</button>
-            <button class="filter-btn" data-filter="business">Бизнес-право</button>
+            <button class="filter-btn active" data-filter="all">Все отзывы</button>
+            <button class="filter-btn" data-filter="positive">Положительные</button>
+            <button class="filter-btn" data-filter="neutral">Нейтральные</button>
         </div>
     </section>
-
     <!-- Основной контент -->
     <main>
-        <section class="service-list animate-on-scroll">
+        <section class="review-list animate-on-scroll">
             <div class="container">
-                <div class="service-item" data-category="civil">
-                    <h3>Гражданские дела</h3>
-                    <p>Разрешение споров между физическими и юридическими лицами.</p>
+                <div class="review-item" data-category="positive">
+                    <div class="stars">★★★★★</div>
+                    <h3>Александр, Москва</h3>
+                    <p>"Обратился за консультацией по семейному вопросу. Результат превзошел ожидания!"</p>
                 </div>
-                <div class="service-item" data-category="criminal">
-                    <h3>Уголовные дела</h3>
-                    <p>Защита прав подозреваемых и обвиняемых на всех этапах процесса.</p>
+                <div class="review-item" data-category="positive">
+                    <div class="stars">★★★★★</div>
+                    <h3>Дмитрий, Химки</h3>
+                    <p>"Попал в ДТП, не знал, что делать. Консультация была полезной. Избежал лишения прав!"</p>
                 </div>
-                <div class="service-item" data-category="family">
-                    <h3>Семейные споры</h3>
-                    <p>Раздел имущества, определение места жительства детей, бракоразводные процессы.</p>
-                </div>
-                <div class="service-item" data-category="business">
-                    <h3>Бизнес-право</h3>
-                    <p>Регистрация компаний, налоговые споры, договорное право.</p>
+                <div class="review-item" data-category="neutral">
+                    <div class="stars">★★★★☆</div>
+                    <h3>Мария, Подольск</h3>
+                    <p>"Хороший специалист, но хотелось бы более быстрого решения вопроса."</p>
                 </div>
             </div>
         </section>
     </main>
-
     <!-- Подвал -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2023 Адвокат Козлов В.М. Все права защищены.</p>
         </div>
     </footer>
-
     <!-- JavaScript для анимации при прокрутке -->
     <script>
-        setupFilter('.service-filter .filter-btn', '.service-item');
+        setupFilter('.review-filter .filter-btn', '.review-item');
     </script>
     <script src="script.js"></script>
 </body>

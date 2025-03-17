@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, {
         threshold: 0.2, // Элемент становится видимым на 20%
     });
-
     // Наблюдаем за всеми элементами с классом animate-on-scroll
     document.querySelectorAll('.animate-on-scroll').forEach((el) => {
         observer.observe(el);
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Мобильное меню
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav');
-
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('active');
@@ -64,13 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 center: [55.755826, 37.6173], // Координаты (широта, долгота)
                 zoom: 15 // Уровень масштабирования
             });
-
             // Добавление метки
             const myPlacemark = new ymaps.Placemark([55.755826, 37.6173], {
                 hintContent: 'Адвокат Козлов В.М.',
                 balloonContent: 'г. Москва, ул. Ленина, д. 45, офис 12'
             });
-
             myMap.geoObjects.add(myPlacemark);
         });
     }

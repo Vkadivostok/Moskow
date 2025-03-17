@@ -260,9 +260,11 @@ body {
     margin-top: 0.5rem;
     display: block;
 }
+
 .service-item p {
     position: relative;
 }
+
 .service-item .seo-text::before {
     content: '';
     display: block;
@@ -271,61 +273,87 @@ body {
     margin: 1rem 0;
 }
 
-/* Форма */
+/* Современная форма */
 .consultation-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
     margin: 0 auto;
-    background-color: #1e1e1e; /* Темный фон для формы */
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-    text-align: left;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: fadeInBlock 1s ease-in-out;
 }
 
-.consultation-form label {
+.form-block {
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+    animation: fadeInFormBlock 0.8s ease-in-out forwards;
+}
+
+.consultation-form .form-block:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.consultation-form .form-block:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.consultation-form .form-block:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.form-label {
     font-size: 1rem;
     font-weight: bold;
-    color: var(--text-color); /* Белый текст для меток */
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
-.consultation-form input, 
-.consultation-form textarea {
+.form-input,
+.form-textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    border: 1px solid #555; /* Серая граница */
-    border-radius: 5px;
+    padding: 1rem;
+    background-color: #333;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: var(--text-color);
     font-size: 1rem;
-    background-color: #333; /* Темный фон для полей ввода */
-    color: var(--text-color); /* Белый текст для полей ввода */
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.consultation-form input:focus, 
-.consultation-form textarea:focus {
-    border-color: var(--primary-color); /* Синяя граница при фокусе */
-    outline: none;
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
 }
 
-.consultation-form button {
+.form-textarea {
+    resize: none;
+    height: 150px;
+}
+
+.form-submit {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
-    padding: 0.8rem;
+    padding: 1rem;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 1rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.consultation-form button:hover {
+.form-submit:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* SEO-текст */
@@ -441,7 +469,6 @@ body {
         flex-direction: column; /* Изображение над текстом на маленьких экранах */
         text-align: center; /* Центрирование текста */
     }
-
     .advocate-image {
         width: 100%; /* Полная ширина на мобильных устройствах */
         max-width: 300px; /* Ограничение максимальной ширины */
