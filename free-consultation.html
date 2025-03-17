@@ -41,19 +41,25 @@
     <main>
         <section class="consultation-form-section animate-on-scroll">
             <div class="container">
-                <form action="https://formspree.io/f/mkgjgzda" method="POST">
+                <!-- Форма Formspree -->
+                <form action="https://formspree.io/f/mkgjgzda" method="POST" class="consultation-form">
+                    <!-- Имя -->
                     <label for="name">Ваше имя:</label>
                     <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
 
+                    <!-- Телефон -->
                     <label for="phone">Телефон:</label>
                     <input type="tel" id="phone" name="phone" required placeholder="Введите ваш телефон">
 
+                    <!-- Сообщение -->
                     <label for="message">Сообщение:</label>
                     <textarea id="message" name="message" rows="5" required placeholder="Опишите вашу ситуацию"></textarea>
 
+                    <!-- Капча (защита от спама) -->
                     <label for="_gotcha">Сколько будет 4 + 4?</label>
                     <input type="number" id="_gotcha" name="_gotcha" required placeholder="Введите ответ">
 
+                    <!-- Кнопка отправки -->
                     <button type="submit">Отправить заявку</button>
                 </form>
             </div>
