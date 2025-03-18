@@ -1,7 +1,7 @@
 /* Основные цвета для темной темы */
 :root {
-    --primary-color: #dbdf2d; /* Синий акцент */
-    --secondary-color: #bb861f; /* Темно-синий */
+    --primary-color: #3b82f6; /* Синий акцент */
+    --secondary-color: #1e40af; /* Темно-синий */
     --text-color: #ffffff; /* Белый текст */
     --background-color: #121212; /* Темный фон */
     --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -17,7 +17,7 @@
 
 body {
     font-family: var(--font-family);
-    background-color: #1a3710;
+    background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -36,8 +36,7 @@ body {
     align-items: center;
     background-color: #1e1e1e; /* Темный фон для шапки */
     box-shadow: var(--box-shadow);
-    padding: 2rem 0; /* Увеличенные отступы */
-    min-height: 150px; /* Минимальная высота шапки */
+    padding: 1rem 0;
 }
 
 .logo {
@@ -123,8 +122,8 @@ body {
 
 /* Баннеры */
 .hero {
-    background: linear-gradient(135deg, rgb(33 31 41 / 21%), rgba(30, 64, 175, 0.8)), url(https://disk.yandex.com/i/CwX-hBJNDBohQQ) no-repeat center center / cover;
-    color: #f3db23;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(30, 64, 175, 0.8)), url('https://disk.yandex.com/i/CwX-hBJNDBohQQ') no-repeat center center/cover;
+    color: var(--text-color);
     text-align: center;
     padding: 100px 0;
     animation: fadeIn 1.5s ease-in-out;
@@ -162,7 +161,7 @@ body {
 .contacts-hero,
 .free-consultation-hero,
 .reviews-hero {
-    background: linear-gradient(135deg, rgb(103 246 59 / 80%), rgba(30, 64, 175, 0.8)), url(https://disk.yandex.com/i/CwX-hBJNDBohQQ) no-repeat center center / cover;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(30, 64, 175, 0.8)), url('https://disk.yandex.com/i/CwX-hBJNDBohQQ') no-repeat center center/cover;
 }
 
 /* Фильтры */
@@ -261,11 +260,9 @@ body {
     margin-top: 0.5rem;
     display: block;
 }
-
 .service-item p {
     position: relative;
 }
-
 .service-item .seo-text::before {
     content: '';
     display: block;
@@ -444,9 +441,10 @@ body {
         flex-direction: column; /* Изображение над текстом на маленьких экранах */
         text-align: center; /* Центрирование текста */
     }
+
     .advocate-image {
         width: 100%; /* Полная ширина на мобильных устройствах */
         max-width: 300px; /* Ограничение максимальной ширины */
         margin: 0 auto; /* Центрирование изображения */
     }
-}
+    }
