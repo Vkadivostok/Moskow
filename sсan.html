@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Имитатор отсканированного PDF</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('https://raw.githubusercontent.com/Vkadivostok/Moskow/main/images/Picsart_25-03-17_16-22-07-992.jpg') center/cover fixed no-repeat;
+    }
+    #pdf-canvas {
+      display: none;
+    }
+    .btn-animate {
+      @apply transition-transform transform hover:scale-105 active:scale-95 shadow-lg;
+    }
+    .toolbar {
+      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex flex-col justify-between">
+    <!-- Верх -->
+    <div class="p-4 text-white">
+      <h1 class="text-2xl font-bold mb-4">Имитатор отсканированного PDF</h1>
+    </div>
+
+    <!-- Контент -->
+    <div class="flex flex-col p-4 space-y-4">
+      <div id="drop-area" ondragover="event.preventDefault()" ondrop="handleDrop(event)" class="border-2 border-dashed border-gray-300 p-6 text-white text-center bg-black/30 rounded-lg">
+        Перетащите PDF-файл сюда
+      </div>
+
+      <div class="bg-white p-4 rounded-lg shadow">
+        <div class="flex flex-col gap-2">
+          <label><input type="checkbox" id="grayscale"> Применить чёрно-белый фильтр</label>
+          <label><input type="checkbox" id="artifact-left"> Добавить артефакт (слева)</label>
+          <label><input type="checkbox" id="artifact-right"> Добавить артефакт (справа)</label>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-lg shadow text-black">
+        <canvas id="pdf-canvas" class="w-full border"></canvas>
+        <div id="file-info" class="mt-4 text-sm text-gray-800"></div>
+
+        <div id="progress-container" class="mt-4 hidden">
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+          </div>
+          <p id="progress-text" class="text-sm text-center mt-2">Обработка...</p>
+        </div>
+
+        <div id="done-notice" class="mt-6 hidden bg-green-100 text-green-800 border border-green-300 p-4 rounded-lg flex items-center justify-between">
+          <span class="text-sm font-semibold">Файл готов к скачиванию!</span>
+          <button onclick="triggerDownload()" class="ml-4 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg btn-animate">Скачать</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Кнопки внизу -->
+    <div class="p-6 flex flex-col sm:flex-row gap-4 justify-center bg-black/50">
+      <input type="file" id="pdf-upload" accept="application/pdf" class="hidden" onchange="loadPDF(event)">
+      <button onclick="document.getElementById('pdf-upload').click()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-lg btn-animate">
+        📥 Загрузить PDF
+      </button>
+      <button onclick="downloadPDF()" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg rounded-lg btn-animate">
+        📄 Обработать и скачать
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let pdfDoc = null;
+    let originalFileName = '';
+    let preparedBlob = null;
+    const canvas = document.getElementById('pdf-canvas');
+    const ctx = canvas.getContext('2d');
+    const notice = document.getElementById('done-notice');
+
+    function handleDrop(event) {
+      event.preventDefault();
+      loadPDF(event);
+    }
+
+    function loadPDF(event) {
+      const file = event.target.files?.[0] || event.dataTransfer?.files?.[0];
+      if (!file || file.type !== 'application/pdf') return alert('Выберите PDF файл.');
+      originalFileName = file.name.replace(/\.pdf$/i, '');
+      const reader = new FileReader();
+      reader.onload = function () {
+        const typedArray = new Uint8Array(reader.result);
+        pdfjsLib.getDocument(typedArray).promise.then(pdf => {
+          pdfDoc = pdf;
+          document.getElementById('file-info').textContent = `Файл: ${originalFileName}.pdf, страниц: ${pdfDoc.numPages}`;
+          notice.classList.add('hidden');
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    async function downloadPDF() {
+      if (!pdfDoc) return alert('Сначала загрузите PDF.');
+      const container = document.getElementById('progress-container');
+      const bar = document.getElementById('progress-bar');
+      const text = document.getElementById('progress-text');
+      container.classList.remove('hidden');
+      notice.classList.add('hidden');
+
+      const newPdf = await PDFLib.PDFDocument.create();
+      const grayscale = document.getElementById('grayscale').checked;
+      const artLeft = document.getElementById('artifact-left').checked;
+      const artRight = document.getElementById('artifact-right').checked;
+      const width = 595.28, height = 841.89;
+
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const page = await pdfDoc.getPage(i);
+        const viewport = page.getViewport({ scale: 2.5 });
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCanvas.width = viewport.width;
+        tempCanvas.height = viewport.height;
+        tempCtx.fillStyle = '#ffffff';
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+        await page.render({ canvasContext: tempCtx, viewport }).promise;
+
+        if (grayscale) {
+          const imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+          const data = imageData.data;
+          for (let j = 0; j < data.length; j += 4) {
+            const r = data[j], g = data[j + 1], b = data[j + 2];
+            const avg = 0.299 * r + 0.587 * g + 0.114 * b;
+            data[j] = data[j + 1] = data[j + 2] = avg;
+          }
+          tempCtx.putImageData(imageData, 0, 0);
+        }
+
+        // 🎯 Добавление артефактов
+        if (artLeft) {
+          const artWidth = 10 + Math.random() * 20;
+          const opacity = 0.1 + Math.random() * 0.2;
+          tempCtx.fillStyle = `rgba(0, 0, 0, ${opacity.toFixed(2)})`;
+          tempCtx.fillRect(0, 0, artWidth, tempCanvas.height);
+        }
+
+        if (artRight) {
+          const artWidth = 10 + Math.random() * 20;
+          const opacity = 0.1 + Math.random() * 0.2;
+          tempCtx.fillStyle = `rgba(0, 0, 0, ${opacity.toFixed(2)})`;
+          tempCtx.fillRect(tempCanvas.width - artWidth, 0, artWidth, tempCanvas.height);
+        }
+
+        const imgBytes = await fetch(tempCanvas.toDataURL()).then(r => r.arrayBuffer());
+        const img = await newPdf.embedPng(imgBytes);
+        const newPage = newPdf.addPage([width, height]);
+        const scaleX = width / tempCanvas.width;
+        const scaleY = height / tempCanvas.height;
+        const scale = Math.min(scaleX, scaleY);
+        const imgW = tempCanvas.width * scale;
+        const imgH = tempCanvas.height * scale;
+        const x = (width - imgW) / 2;
+        const y = (height - imgH) / 2;
+        newPage.drawImage(img, { x, y, width: imgW, height: imgH });
+
+        bar.style.width = `${(i / pdfDoc.numPages) * 100}%`;
+        text.textContent = `Обработка страницы ${i} из ${pdfDoc.numPages}`;
+      }
+
+      const pdfBytes = await newPdf.save();
+      preparedBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+      notice.classList.remove('hidden');
+      container.classList.add('hidden');
+    }
+
+    function triggerDownload() {
+      if (!preparedBlob) return;
+      const url = URL.createObjectURL(preparedBlob);
+      const a = document.createElement('a');
+      const today = new Date();
+      const d = String(today.getDate()).padStart(2, '0');
+      const m = String(today.getMonth() + 1).padStart(2, '0');
+      const y = today.getFullYear();
+      const filename = `${originalFileName} на ${pdfDoc.numPages}л от ${d}.${m}.${y}.pdf`;
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
